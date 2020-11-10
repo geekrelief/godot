@@ -167,6 +167,7 @@ private:
 	int history_max_size;
 
 	String path;
+	Vector<String> paths_selected;
 
 	bool initialized;
 
@@ -180,6 +181,8 @@ private:
 	bool _create_tree(TreeItem *p_parent, EditorFileSystemDirectory *p_dir, Vector<String> &uncollapsed_paths, bool p_select_in_favorites, bool p_unfold_path = false);
 	Vector<String> _compute_uncollapsed_paths();
 	void _update_tree(const Vector<String> &p_uncollapsed_paths = Vector<String>(), bool p_uncollapse_root = false, bool p_select_in_favorites = false, bool p_unfold_path = false);
+	bool _restore_selection(TreeItem *p_parent, int p_restored_count, bool &p_parent_should_expand);
+	bool _is_valid_path(TreeItem *p_parent, const String &p_path) const;
 	void _navigate_to_path(const String &p_path, bool p_select_in_favorites = false);
 
 	void _file_list_gui_input(Ref<InputEvent> p_event);
@@ -198,6 +201,7 @@ private:
 	void _file_multi_selected(int p_index, bool p_selected);
 	void _tree_multi_selected(Object *p_item, int p_column, bool p_selected);
 
+	void _get_imported_files(const String &p_path, Vector<String> &files) const;
 	void _update_import_dock();
 
 	void _get_all_items_in_dir(EditorFileSystemDirectory *efsd, Vector<String> &files, Vector<String> &folders) const;
@@ -212,6 +216,7 @@ private:
 
 	void _file_removed(String p_file);
 	void _folder_removed(String p_folder);
+	void _files_removed(const Vector<String> &p_files);
 	void _files_moved(String p_old_file, String p_new_file);
 	void _folder_moved(String p_old_folder, String p_new_folder);
 
