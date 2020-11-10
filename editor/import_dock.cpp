@@ -44,7 +44,6 @@ public:
 	bool checking;
 
 	bool _set(const StringName &p_name, const Variant &p_value) {
-
 		if (values.has(p_name)) {
 			values[p_name] = p_value;
 			if (checking) {
@@ -58,7 +57,6 @@ public:
 	}
 
 	bool _get(const StringName &p_name, Variant &r_ret) const {
-
 		if (values.has(p_name)) {
 			r_ret = values[p_name];
 			return true;
@@ -67,7 +65,6 @@ public:
 		return false;
 	}
 	void _get_property_list(List<PropertyInfo> *p_list) const {
-
 		for (const List<PropertyInfo>::Element *E = properties.front(); E; E = E->next()) {
 			if (!importer->get_option_visibility(E->get().name, values))
 				continue;
@@ -91,12 +88,35 @@ public:
 	}
 };
 
-void ImportDock::set_edit_path(const String &p_path) {
-
+Ref<ConfigFile> ImportDock::_get_config(const String &p_path) {
+	const String config_path = p_path + ".import";
 	Ref<ConfigFile> config;
-	config.instance();
-	Error err = config->load(p_path + ".import");
-	if (err != OK) {
+	if (config_cache.has(config_path)) {
+		config = config_cache[config_path];
+	} else {
+		config.instance();
+		Error err = config->load(config_path);
+		if (err == OK) {
+			config_cache[config_path] = config;
+		} else {
+			config.unref();
+		}
+	}
+
+	return config;
+}
+
+void ImportDock::set_edit_path(const String &p_path) {
+	clear();
+
+	files_to_import.clear();
+	files_to_import.push_back(p_path);
+	if (!is_visible()) {
+		return;
+	}
+
+	Ref<ConfigFile> config = _get_config(p_path);
+	if (config.is_null()) {
 		clear();
 		return;
 	}
@@ -145,7 +165,6 @@ void ImportDock::set_edit_path(const String &p_path) {
 }
 
 void ImportDock::_update_options(const Ref<ConfigFile> &p_config) {
-
 	List<ResourceImporter::ImportOption> options;
 
 	if (params->importer.is_valid()) {
@@ -158,7 +177,6 @@ void ImportDock::_update_options(const Ref<ConfigFile> &p_config) {
 	params->checked.clear();
 
 	for (List<ResourceImporter::ImportOption>::Element *E = options.front(); E; E = E->next()) {
-
 		params->properties.push_back(E->get().option);
 		if (p_config.is_valid() && p_config->has_section_key("params", E->get().option.name)) {
 			params->values[E->get().option.name] = p_config->get_value("params", E->get().option.name);
@@ -172,18 +190,39 @@ void ImportDock::_update_options(const Ref<ConfigFile> &p_config) {
 }
 
 void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
-
 	clear();
 
-	// Use the value that is repeated the most.
-	Map<String, Dictionary> value_frequency;
+	files_to_import.clear();
+	files_to_import.append_array(p_paths);
 
-	for (int i = 0; i < p_paths.size(); i++) {
+	if (!is_visible()) {
+		return;
+	}
 
-		Ref<ConfigFile> config;
-		config.instance();
-		Error err = config->load(p_paths[i] + ".import");
-		ERR_CONTINUE(err != OK);
+	importing_canceled = false;
+	threadvar_importing_complete = false;
+	thread.start(_thread_func, this);
+}
+
+void ImportDock::_thread_func(void *user_data) {
+	ImportDock *id = (ImportDock *)user_data;
+	id->_parse_config_files();
+}
+
+void ImportDock::_parse_config_files() {
+	value_frequency.clear();
+
+	for (int i = 0; i < files_to_import.size(); i++) {
+		importing_mutex.lock();
+		threadvar_importing_text = vformat(TTR("Processing %d / %d"), i, files_to_import.size());
+		bool should_stop = importing_canceled;
+		importing_mutex.unlock();
+		if (should_stop) {
+			return;
+		}
+
+		Ref<ConfigFile> config = _get_config(files_to_import[i]);
+		ERR_CONTINUE(config.is_null());
 
 		if (i == 0) {
 			params->importer = ResourceFormatImporter::get_singleton()->get_importer_by_name(config->get_value("remap", "importer"));
@@ -201,7 +240,6 @@ void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
 		config->get_section_keys("params", &keys);
 
 		for (List<String>::Element *E = keys.front(); E; E = E->next()) {
-
 			if (!value_frequency.has(E->get())) {
 				value_frequency[E->get()] = Dictionary();
 			}
@@ -214,6 +252,29 @@ void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
 				value_frequency[E->get()][value] = 1;
 			}
 		}
+
+		call_deferred("_finish_set_edit_multiple_paths");
+	}
+
+	importing_mutex.lock();
+	threadvar_importing_complete = true;
+	importing_mutex.unlock();
+
+	call_deferred("_finish_set_edit_multiple_paths");
+}
+
+void ImportDock::_finish_set_edit_multiple_paths() {
+	importing_mutex.lock();
+	String label_text = threadvar_importing_text;
+	bool complete = threadvar_importing_complete;
+	importing_mutex.unlock();
+
+	if (!importing_canceled) {
+		imported->set_text(label_text);
+	}
+
+	if (!complete) {
+		return;
 	}
 
 	ERR_FAIL_COND(params->importer.is_null());
@@ -227,11 +288,9 @@ void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
 	params->checked.clear();
 
 	for (List<ResourceImporter::ImportOption>::Element *E = options.front(); E; E = E->next()) {
-
 		params->properties.push_back(E->get().option);
 
 		if (value_frequency.has(E->get().option.name)) {
-
 			Dictionary d = value_frequency[E->get().option.name];
 			int freq = 0;
 			List<Variant> v;
@@ -253,7 +312,7 @@ void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
 	params->update();
 
 	List<Ref<ResourceImporter> > importers;
-	ResourceFormatImporter::get_singleton()->get_importers_for_extension(p_paths[0].get_extension(), &importers);
+	ResourceFormatImporter::get_singleton()->get_importers_for_extension(files_to_import[0].get_extension(), &importers);
 	List<Pair<String, String> > importer_names;
 
 	for (List<Ref<ResourceImporter> >::Element *E = importers.front(); E; E = E->next()) {
@@ -274,12 +333,12 @@ void ImportDock::set_edit_multiple_paths(const Vector<String> &p_paths) {
 
 	_update_preset_menu();
 
-	params->paths = p_paths;
+	params->paths = files_to_import;
 	import->set_disabled(false);
 	import_as->set_disabled(false);
 	preset->set_disabled(false);
 
-	imported->set_text(vformat(TTR("%d Files"), p_paths.size()));
+	imported->set_text(vformat(TTR("%d Files"), files_to_import.size()));
 }
 
 void ImportDock::_update_preset_menu() {
@@ -322,18 +381,13 @@ void ImportDock::_importer_selected(int i_idx) {
 
 		Ref<ConfigFile> config;
 		if (params->paths.size()) {
-			config.instance();
-			Error err = config->load(params->paths[0] + ".import");
-			if (err != OK) {
-				config.unref();
-			}
+			config = _get_config(params->paths[0]);
 		}
 		_update_options(config);
 	}
 }
 
 void ImportDock::_preset_selected(int p_idx) {
-
 	int item_id = preset->get_popup()->get_item_id(p_idx);
 
 	switch (item_id) {
@@ -349,7 +403,6 @@ void ImportDock::_preset_selected(int p_idx) {
 			_update_preset_menu();
 		} break;
 		case ITEM_LOAD_DEFAULT: {
-
 			ERR_FAIL_COND(!ProjectSettings::get_singleton()->has_setting("importer_defaults/" + params->importer->get_importer_name()));
 
 			Dictionary d = ProjectSettings::get_singleton()->get("importer_defaults/" + params->importer->get_importer_name());
@@ -368,13 +421,11 @@ void ImportDock::_preset_selected(int p_idx) {
 			params->update();
 		} break;
 		case ITEM_CLEAR_DEFAULT: {
-
 			ProjectSettings::get_singleton()->set("importer_defaults/" + params->importer->get_importer_name(), Variant());
 			ProjectSettings::get_singleton()->save();
 			_update_preset_menu();
 		} break;
 		default: {
-
 			List<ResourceImporter::ImportOption> options;
 
 			params->importer->get_import_options(&options, p_idx);
@@ -393,7 +444,19 @@ void ImportDock::_preset_selected(int p_idx) {
 	}
 }
 
+void ImportDock::files_removed(const Vector<String> &p_paths) {
+	for (int i = 0; i < p_paths.size(); i++) {
+		config_cache.erase(p_paths[i] + ".import");
+	}
+}
+
 void ImportDock::clear() {
+	if (thread.is_started()) {
+		importing_mutex.lock();
+		importing_canceled = true;
+		importing_mutex.unlock();
+		thread.wait_to_finish();
+	}
 
 	imported->set_text("");
 	import->set_disabled(true);
@@ -407,19 +470,16 @@ void ImportDock::clear() {
 }
 
 static bool _find_owners(EditorFileSystemDirectory *efsd, const String &p_path) {
-
 	if (!efsd)
 		return false;
 
 	for (int i = 0; i < efsd->get_subdir_count(); i++) {
-
 		if (_find_owners(efsd->get_subdir(i), p_path)) {
 			return true;
 		}
 	}
 
 	for (int i = 0; i < efsd->get_file_count(); i++) {
-
 		Vector<String> deps = efsd->get_file_deps(i);
 		if (deps.find(p_path) != -1)
 			return true;
@@ -428,7 +488,6 @@ static bool _find_owners(EditorFileSystemDirectory *efsd, const String &p_path) 
 	return false;
 }
 void ImportDock::_reimport_attempt() {
-
 	bool need_restart = false;
 	bool used_in_resources = false;
 
@@ -439,10 +498,8 @@ void ImportDock::_reimport_attempt() {
 		importer_name = "keep";
 	}
 	for (int i = 0; i < params->paths.size(); i++) {
-		Ref<ConfigFile> config;
-		config.instance();
-		Error err = config->load(params->paths[i] + ".import");
-		ERR_CONTINUE(err != OK);
+		Ref<ConfigFile> config = _get_config(params->paths[i]);
+		ERR_CONTINUE(config.is_null());
 
 		String imported_with = config->get_value("remap", "importer");
 		if (imported_with != importer_name) {
@@ -463,7 +520,6 @@ void ImportDock::_reimport_attempt() {
 }
 
 void ImportDock::_reimport_and_restart() {
-
 	EditorNode::get_singleton()->save_all_scenes();
 	EditorResourcePreview::get_singleton()->stop(); //don't try to re-create previews after import
 	_reimport();
@@ -471,13 +527,9 @@ void ImportDock::_reimport_and_restart() {
 }
 
 void ImportDock::_reimport() {
-
 	for (int i = 0; i < params->paths.size(); i++) {
-
-		Ref<ConfigFile> config;
-		config.instance();
-		Error err = config->load(params->paths[i] + ".import");
-		ERR_CONTINUE(err != OK);
+		Ref<ConfigFile> config = _get_config(params->paths[i]);
+		ERR_CONTINUE(config.is_null());
 
 		if (params->importer.is_valid()) {
 			String importer_name = params->importer->get_importer_name();
@@ -513,7 +565,6 @@ void ImportDock::_reimport() {
 			} else {
 				config->set_value("remap", "group_file", Variant()); //clear group file if unused
 			}
-
 		} else {
 			//set to no import
 			config->clear();
@@ -529,16 +580,37 @@ void ImportDock::_reimport() {
 
 void ImportDock::_notification(int p_what) {
 	switch (p_what) {
-
 		case EditorSettings::NOTIFICATION_EDITOR_SETTINGS_CHANGED: {
-
 			imported->add_style_override("normal", get_stylebox("normal", "LineEdit"));
 		} break;
 
 		case NOTIFICATION_ENTER_TREE: {
-
 			import_opts->edit(params);
 			label_warning->add_color_override("font_color", get_color("warning_color", "Editor"));
+		} break;
+
+		case NOTIFICATION_VISIBILITY_CHANGED: {
+			if (is_visible()) {
+				if (files_to_import.size() == 1) {
+					// ??? A crash can occur in set_edit_path when accessing p_path,
+					// if files_to_import[0] is passed directly.
+					String file = files_to_import[0];
+					set_edit_path(file);
+				} else if (files_to_import.size() > 1) {
+					// Copy the vector because set_edit_multiple_paths resets files_to_import.
+					Vector<String> files = files_to_import;
+					set_edit_multiple_paths(files);
+				}
+			} else {
+				clear();
+				config_cache.clear();
+			}
+		} break;
+
+		case NOTIFICATION_EXIT_TREE: {
+			// If the ImportDock or the window closes while processing,
+			// stop the thread so the editor doesn't crash.
+			clear();
 		} break;
 	}
 }
@@ -551,24 +623,22 @@ void ImportDock::_property_toggled(const StringName &p_prop, bool p_checked) {
 	}
 }
 void ImportDock::_bind_methods() {
-
 	ClassDB::bind_method(D_METHOD("_reimport"), &ImportDock::_reimport);
 	ClassDB::bind_method(D_METHOD("_preset_selected"), &ImportDock::_preset_selected);
 	ClassDB::bind_method(D_METHOD("_importer_selected"), &ImportDock::_importer_selected);
 	ClassDB::bind_method(D_METHOD("_property_toggled"), &ImportDock::_property_toggled);
 	ClassDB::bind_method(D_METHOD("_reimport_and_restart"), &ImportDock::_reimport_and_restart);
 	ClassDB::bind_method(D_METHOD("_reimport_attempt"), &ImportDock::_reimport_attempt);
+	ClassDB::bind_method(D_METHOD("_finish_set_edit_multiple_paths"), &ImportDock::_finish_set_edit_multiple_paths);
 }
 
 void ImportDock::initialize_import_options() const {
-
 	ERR_FAIL_COND(!import_opts || !params);
 
 	import_opts->edit(params);
 }
 
 ImportDock::ImportDock() {
-
 	set_name("Import");
 	imported = memnew(Label);
 	imported->add_style_override("normal", EditorNode::get_singleton()->get_gui_base()->get_stylebox("normal", "LineEdit"));
@@ -617,6 +687,5 @@ ImportDock::ImportDock() {
 }
 
 ImportDock::~ImportDock() {
-
 	memdelete(params);
 }
