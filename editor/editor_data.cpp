@@ -483,13 +483,14 @@ EditorPlugin *EditorData::get_editor_plugin(int p_idx) {
 	return editor_plugins[p_idx];
 }
 
-void EditorData::add_custom_type(const String &p_type, const String &p_inherits, const Ref<Script> &p_script, const Ref<Texture> &p_icon) {
+void EditorData::add_custom_type(const String &p_type, const String &p_inherits, const Ref<Script> &p_script, const Ref<Texture> &p_icon, const Ref<PackedScene> &p_scene) {
 
 	ERR_FAIL_COND_MSG(p_script.is_null(), "It's not a reference to a valid Script object.");
 	CustomType ct;
 	ct.name = p_type;
 	ct.icon = p_icon;
 	ct.script = p_script;
+	ct.scene = p_scene;
 	if (!custom_types.has(p_inherits)) {
 		custom_types[p_inherits] = Vector<CustomType>();
 	}

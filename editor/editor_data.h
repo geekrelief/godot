@@ -113,6 +113,7 @@ public:
 		String name;
 		Ref<Script> script;
 		Ref<Texture> icon;
+		Ref<PackedScene> scene;
 	};
 
 	struct EditedScene {
@@ -178,7 +179,7 @@ public:
 	void save_editor_global_states();
 	void restore_editor_global_states();
 
-	void add_custom_type(const String &p_type, const String &p_inherits, const Ref<Script> &p_script, const Ref<Texture> &p_icon);
+	void add_custom_type(const String &p_type, const String &p_inherits, const Ref<Script> &p_script, const Ref<Texture> &p_icon, const Ref<PackedScene> &p_scene);
 	Variant instance_custom_type(const String &p_type, const String &p_inherits);
 	void remove_custom_type(const String &p_type);
 	const Map<String, Vector<CustomType> > &get_custom_types() const { return custom_types; }
