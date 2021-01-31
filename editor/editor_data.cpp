@@ -504,16 +504,24 @@ Variant EditorData::instance_custom_type(const String &p_type, const String &p_i
 
 		for (int i = 0; i < get_custom_types()[p_inherits].size(); i++) {
 			if (get_custom_types()[p_inherits][i].name == p_type) {
-				Ref<Script> script = get_custom_types()[p_inherits][i].script;
+				CustomType ct = get_custom_types()[p_inherits][i];
+				Ref<PackedScene> scene = ct.scene;
+				if (scene.is_valid()) {
+					Node* instanced_scene = scene->instance(PackedScene::GEN_EDIT_STATE_INSTANCE);
+					// error check if (!instanced_scene) 
+					return instanced_scene;
+				} else {
+					Ref<Script> script = ct.script;
 
-				Variant ob = ClassDB::instance(p_inherits);
-				ERR_FAIL_COND_V(!ob, Variant());
-				Node *n = Object::cast_to<Node>(ob);
-				if (n) {
-					n->set_name(p_type);
+					Variant ob = ClassDB::instance(p_inherits);
+					ERR_FAIL_COND_V(!ob, Variant());
+					Node *n = Object::cast_to<Node>(ob);
+					if (n) {
+						n->set_name(p_type);
+					}
+					((Object *)ob)->set_script(script.get_ref_ptr());
+					return ob;
 				}
-				((Object *)ob)->set_script(script.get_ref_ptr());
-				return ob;
 			}
 		}
 	}

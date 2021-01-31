@@ -37,6 +37,7 @@
 #include "editor/editor_plugin.h"
 #include "editor/plugins/script_editor_plugin.h"
 #include "scene/resources/texture.h"
+#include "scene/resources/packed_scene.h"
 
 class EditorHistory {
 

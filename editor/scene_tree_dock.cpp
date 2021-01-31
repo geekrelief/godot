@@ -1990,11 +1990,16 @@ void SceneTreeDock::_do_create(Node *p_parent) {
 		Control *ct = Object::cast_to<Control>(c);
 
 		Size2 ms = ct->get_minimum_size();
+		Size2 size = ct->get_size();
 		if (ms.width < 4)
 			ms.width = 40;
 		if (ms.height < 4)
 			ms.height = 40;
-		ct->set_size(ms);
+		if (size.width < ms.width)
+			size.width = ms.width;
+		if (size.height < ms.height)
+			size.height = ms.height;
+		ct->set_size(size);
 	}
 }
 

@@ -40,6 +40,7 @@
 #include "scene/gui/tool_button.h"
 #include "scene/main/node.h"
 #include "scene/resources/texture.h"
+#include "scene/resources/packed_scene.h"
 
 class EditorNode;
 class Spatial;
