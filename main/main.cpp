@@ -452,23 +452,16 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 		List<String>::Element *N = I->next();
 
 		if (I->get() == "-h" || I->get() == "--help" || I->get() == "/?") { // display help
-
 			show_help = true;
 			goto error;
-
 		} else if (I->get() == "--version") {
 			print_line(get_full_version_string());
 			goto error;
-
 		} else if (I->get() == "-v" || I->get() == "--verbose") { // verbose output
-
 			OS::get_singleton()->_verbose_stdout = true;
 		} else if (I->get() == "--quiet") { // quieter output
-
 			quiet_stdout = true;
-
 		} else if (I->get() == "--audio-driver") { // audio driver
-
 			if (I->next()) {
 				audio_driver = I->next()->get();
 
@@ -502,9 +495,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing audio driver argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--video-driver") { // force video driver
-
 			if (I->next()) {
 				video_driver = I->next()->get();
 
@@ -540,26 +531,19 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			}
 #ifndef SERVER_ENABLED
 		} else if (I->get() == "-f" || I->get() == "--fullscreen") { // force fullscreen
-
 			init_fullscreen = true;
 		} else if (I->get() == "-m" || I->get() == "--maximized") { // force maximized window
-
 			init_maximized = true;
 			video_mode.maximized = true;
-
 		} else if (I->get() == "-w" || I->get() == "--windowed") { // force windowed window
-
 			init_windowed = true;
 		} else if (I->get() == "-t" || I->get() == "--always-on-top") { // force always-on-top window
-
 			init_always_on_top = true;
 		} else if (I->get() == "--resolution") { // force resolution
-
 			if (I->next()) {
 				String vm = I->next()->get();
 
 				if (vm.find("x") == -1) { // invalid parameter format
-
 					OS::get_singleton()->print("Invalid resolution '%s', it should be e.g. '1280x720'.\n", vm.utf8().get_data());
 					goto error;
 				}
@@ -581,14 +565,11 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing resolution argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--position") { // set window position
-
 			if (I->next()) {
 				String vm = I->next()->get();
 
 				if (vm.find(",") == -1) { // invalid parameter format
-
 					OS::get_singleton()->print("Invalid position '%s', it should be e.g. '80,128'.\n", vm.utf8().get_data());
 					goto error;
 				}
@@ -604,12 +585,9 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing position argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--low-dpi") { // force low DPI (macOS only)
-
 			force_lowdpi = true;
 		} else if (I->get() == "--no-window") { // run with an invisible window
-
 			OS::get_singleton()->set_no_window_mode(true);
 		} else if (I->get() == "--tablet-driver") {
 			if (I->next()) {
@@ -639,11 +617,8 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			saw_vsync_via_compositor_override = true;
 #endif
 		} else if (I->get() == "--profiling") { // enable profiling
-
 			use_debug_profiler = true;
-
 		} else if (I->get() == "-l" || I->get() == "--language") { // language
-
 			if (I->next()) {
 				locale = I->next()->get();
 				N = I->next()->next();
@@ -651,9 +626,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing language argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--remote-fs") { // remote filesystem
-
 			if (I->next()) {
 				remotefs = I->next()->get();
 				N = I->next()->next();
@@ -662,7 +635,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				goto error;
 			}
 		} else if (I->get() == "--remote-fs-password") { // remote filesystem password
-
 			if (I->next()) {
 				remotefs_pass = I->next()->get();
 				N = I->next()->next();
@@ -671,7 +643,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				goto error;
 			}
 		} else if (I->get() == "--render-thread") { // render thread mode
-
 			if (I->next()) {
 				if (I->next()->get() == "safe") {
 					rtm = OS::RENDER_THREAD_SAFE;
@@ -688,13 +659,10 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			}
 #ifdef TOOLS_ENABLED
 		} else if (I->get() == "-e" || I->get() == "--editor") { // starts editor
-
 			editor = true;
 		} else if (I->get() == "-p" || I->get() == "--project-manager") { // starts project manager
-
 			project_manager = true;
 		} else if (I->get() == "--build-solutions") { // Build the scripting solution such C#
-
 			auto_build_solutions = true;
 			editor = true;
 #ifdef DEBUG_METHODS_ENABLED
@@ -706,12 +674,10 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			main_args.push_back(I->get());
 #endif
 		} else if (I->get() == "--export" || I->get() == "--export-debug" || I->get() == "--export-pack") { // Export project
-
 			editor = true;
 			main_args.push_back(I->get());
 #endif
 		} else if (I->get() == "--path") { // set path of project to start or edit
-
 			if (I->next()) {
 				String p = I->next()->get();
 				if (OS::get_singleton()->set_cwd(p) == OK) {
@@ -746,7 +712,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 			editor = true;
 #endif
 		} else if (I->get() == "-b" || I->get() == "--breakpoints") { // add breakpoints
-
 			if (I->next()) {
 				String bplist = I->next()->get();
 				breakpoints = bplist.split(",");
@@ -755,9 +720,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing list of breakpoints, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--frame-delay") { // force frame delay
-
 			if (I->next()) {
 				frame_delay = I->next()->get().to_int();
 				N = I->next()->next();
@@ -765,9 +728,7 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing frame delay argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--time-scale") { // force time scale
-
 			if (I->next()) {
 				Engine::get_singleton()->set_time_scale(I->next()->get().to_double());
 				N = I->next()->next();
@@ -775,7 +736,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing time scale argument, aborting.\n");
 				goto error;
 			}
-
 		} else if (I->get() == "--main-pack") {
 			if (I->next()) {
 				main_pack = I->next()->get();
@@ -784,7 +744,6 @@ Error Main::setup(const char *execpath, int argc, char *argv[], bool p_second_ph
 				OS::get_singleton()->print("Missing path to main pack file, aborting.\n");
 				goto error;
 			};
-
 		} else if (I->get() == "-d" || I->get() == "--debug") {
 			debug_mode = "local";
 			OS::get_singleton()->_debug_stdout = true;
@@ -1347,7 +1306,6 @@ Error Main::setup2(Thread::ID p_main_tid_override) {
 		if (boot_logo.is_valid()) {
 			OS::get_singleton()->_msec_splash = OS::get_singleton()->get_ticks_msec();
 			VisualServer::get_singleton()->set_boot_image(boot_logo, boot_bg_color, boot_logo_scale, boot_logo_filter);
-
 		} else {
 #ifndef NO_DEFAULT_BOOT_LOGO
 			MAIN_PRINT("Main: Create bootsplash");
@@ -1637,7 +1595,6 @@ bool Main::start() {
 			return false;
 		}
 #endif
-
 	} else if (script != "") {
 		Ref<Script> script_res = ResourceLoader::load(script);
 		ERR_FAIL_COND_V_MSG(script_res.is_null(), false, "Can't load script: " + script);
@@ -1665,7 +1622,6 @@ bool Main::start() {
 		} else {
 			return false;
 		}
-
 	} else {
 		main_loop_type = GLOBAL_DEF("application/run/main_loop_type", "");
 	}
@@ -1864,7 +1820,6 @@ bool Main::start() {
 
 			bool font_oversampling = GLOBAL_DEF("rendering/quality/dynamic_fonts/use_oversampling", true);
 			sml->set_use_font_oversampling(font_oversampling);
-
 		} else {
 			GLOBAL_DEF("display/window/stretch/mode", "disabled");
 			ProjectSettings::get_singleton()->set_custom_property_info("display/window/stretch/mode", PropertyInfo(Variant::STRING, "display/window/stretch/mode", PROPERTY_HINT_ENUM, "disabled,2d,viewport"));
@@ -1888,7 +1843,6 @@ bool Main::start() {
 				if (!absolute) {
 					if (ProjectSettings::get_singleton()->is_using_datapack()) {
 						local_game_path = "res://" + local_game_path;
-
 					} else {
 						int sep = local_game_path.find_last("/");
 
@@ -1925,7 +1879,6 @@ bool Main::start() {
 		}
 
 		if (!project_manager && !editor) { // game
-
 			// Load SSL Certificates from Project Settings (or builtin).
 			Crypto::load_default_certificates(GLOBAL_DEF("network/ssl/certificates", ""));
 
@@ -2079,7 +2032,12 @@ bool Main::iteration() {
 
 		message_queue->flush();
 
+		OS *os = OS::get_singleton();
+		uint64_t start_3d = os->get_ticks_usec();
+
 		PhysicsServer::get_singleton()->step(frame_slice * time_scale);
+
+		Engine::get_singleton()->_physics_step_time_usec = os->get_ticks_usec() - start_3d;
 
 		Physics2DServer::get_singleton()->end_sync();
 		Physics2DServer::get_singleton()->step(frame_slice * time_scale);
