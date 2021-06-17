@@ -772,7 +772,6 @@ void SpaceBullet::check_ghost_overlaps() {
 							hasOverlap = true;
 							goto collision_found;
 						}
-
 					} else {
 						btCollisionObjectWrapper obA(nullptr, area_shape, area->get_bt_ghost(), gjk_input.m_transformA, -1, y);
 						btCollisionObjectWrapper obB(nullptr, other_body_shape, otherObject->get_bt_collision_object(), gjk_input.m_transformB, -1, z);
@@ -794,7 +793,6 @@ void SpaceBullet::check_ghost_overlaps() {
 							goto collision_found;
 						}
 					}
-
 				} // ~For each other object shape
 			} // ~For each area shape
 
@@ -903,8 +901,8 @@ void SpaceBullet::check_body_collision() {
 void SpaceBullet::update_gravity() {
 	btVector3 btGravity;
 	G_TO_B(gravityDirection * gravityMagnitude, btGravity);
-	//dynamicsWorld->setGravity(btGravity);
-	dynamicsWorld->setGravity(btVector3(0, 0, 0));
+	dynamicsWorld->setGravity(btGravity);
+	//dynamicsWorld->setGravity(btVector3(0, 0, 0));
 	if (soft_body_world_info) {
 		soft_body_world_info->m_gravity = btGravity;
 	}
@@ -1039,7 +1037,6 @@ bool SpaceBullet::test_body_motion(RigidBodyBullet *p_body, const Transform &p_f
 	bool has_penetration = false;
 
 	{ /// Phase three - contact test with margin
-
 		btVector3 __rec(0, 0, 0);
 		RecoverResult r_recover_result;
 
