@@ -74,7 +74,6 @@ protected:
 
 public:
 	enum SaverFlags {
-
 		FLAG_RELATIVE_PATHS = 1,
 		FLAG_BUNDLE_RESOURCES = 2,
 		FLAG_CHANGE_PATH = 4,
@@ -337,7 +336,6 @@ public:
 	};
 
 	enum ScreenOrientation {
-
 		SCREEN_ORIENTATION_LANDSCAPE,
 		SCREEN_ORIENTATION_PORTRAIT,
 		SCREEN_ORIENTATION_REVERSE_LANDSCAPE,
@@ -489,7 +487,6 @@ protected:
 
 public:
 	enum ModeFlags {
-
 		READ = 1,
 		WRITE = 2,
 		READ_WRITE = 3,
@@ -686,7 +683,6 @@ protected:
 
 public:
 	enum Priority {
-
 		PRIORITY_LOW,
 		PRIORITY_NORMAL,
 		PRIORITY_HIGH,
@@ -757,6 +753,7 @@ public:
 	void set_physics_jitter_fix(float p_threshold);
 	float get_physics_jitter_fix() const;
 	float get_physics_interpolation_fraction() const;
+	uint64_t get_physics_step_time_usec() const;
 
 	void set_target_fps(int p_fps);
 	int get_target_fps() const;

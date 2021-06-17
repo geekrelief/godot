@@ -1,0 +1,2676 @@
+{
+	"methods": [
+		{
+			"name": "area_create",
+			"return_type": "maybe_index_t",
+			"arguments": []
+		},
+		{
+			"name": "area_set_space",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_space"
+				}
+			]
+		},
+		{
+			"name": "area_get_space",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_set_space_override_mode",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_mode"
+				}
+			]
+		},
+		{
+			"name": "area_get_space_override_mode",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_add_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				},
+				{
+					"type": "bool",
+					"name": "p_disabled"
+				}
+			]
+		},
+		{
+			"name": "area_set_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "area_set_shape_transform",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				}
+			]
+		},
+		{
+			"name": "area_get_shape_count",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_get_shape",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "area_get_shape_transform",
+			"return_type": "godot_transform",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "area_remove_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "area_clear_shapes",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_set_shape_disabled",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "bool",
+					"name": "p_disabled"
+				}
+			]
+		},
+		{
+			"name": "area_attach_object_instance_id",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_id"
+				}
+			]
+		},
+		{
+			"name": "area_get_object_instance_id",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "const godot_variant *",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "area_get_param",
+			"return_type": "godot_variant",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "area_set_transform",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				}
+			]
+		},
+		{
+			"name": "area_get_transform",
+			"return_type": "godot_transform",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "area_set_collision_mask",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_mask"
+				}
+			]
+		},
+		{
+			"name": "area_set_collision_layer",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_layer"
+				}
+			]
+		},
+		{
+			"name": "area_set_monitorable",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "bool",
+					"name": "p_monitorable"
+				}
+			]
+		},
+		{
+			"name": "area_set_ray_pickable",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				},
+				{
+					"type": "bool",
+					"name": "p_enable"
+				}
+			]
+		},
+		{
+			"name": "area_is_ray_pickable",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_area"
+				}
+			]
+		},
+		{
+			"name": "body_create",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "int",
+					"name": "p_mode"
+				},
+				{
+					"type": "bool",
+					"name": "p_init_sleeping"
+				}
+			]
+		},
+		{
+			"name": "body_set_space",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_space"
+				}
+			]
+		},
+		{
+			"name": "body_get_space",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_mode",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_mode"
+				}
+			]
+		},
+		{
+			"name": "body_get_mode",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_add_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				},
+				{
+					"type": "bool",
+					"name": "p_disabled"
+				}
+			]
+		},
+		{
+			"name": "body_set_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "body_set_shape_transform",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				}
+			]
+		},
+		{
+			"name": "body_get_shape_count",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_get_shape",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "body_get_shape_transform",
+			"return_type": "godot_transform",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "body_set_shape_disabled",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				},
+				{
+					"type": "bool",
+					"name": "p_disabled"
+				}
+			]
+		},
+		{
+			"name": "body_remove_shape",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_shape_idx"
+				}
+			]
+		},
+		{
+			"name": "body_clear_shapes",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_attach_object_instance_id",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_id"
+				}
+			]
+		},
+		{
+			"name": "body_get_object_instance_id",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_enable_continuous_collision_detection",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "bool",
+					"name": "p_enable"
+				}
+			]
+		},
+		{
+			"name": "body_is_continuous_collision_detection_enabled",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_collision_layer",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_layer"
+				}
+			]
+		},
+		{
+			"name": "body_get_collision_layer",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_collision_mask",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_mask"
+				}
+			]
+		},
+		{
+			"name": "body_get_collision_mask",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_user_flags",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_flags"
+				}
+			]
+		},
+		{
+			"name": "body_get_user_flags",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "body_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "body_set_kinematic_safe_margin",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_margin"
+				}
+			]
+		},
+		{
+			"name": "body_get_kinematic_safe_margin",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_state",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_state"
+				},
+				{
+					"type": "const godot_variant *",
+					"name": "p_variant"
+				}
+			]
+		},
+		{
+			"name": "body_get_state",
+			"return_type": "godot_variant",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_state"
+				}
+			]
+		},
+		{
+			"name": "body_set_applied_force",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_force"
+				}
+			]
+		},
+		{
+			"name": "body_get_applied_force",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_applied_torque",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_torque"
+				}
+			]
+		},
+		{
+			"name": "body_get_applied_torque",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_add_central_force",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_force"
+				}
+			]
+		},
+		{
+			"name": "body_add_force",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_force"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_pos"
+				}
+			]
+		},
+		{
+			"name": "body_add_torque",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_torque"
+				}
+			]
+		},
+		{
+			"name": "body_apply_central_impulse",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_impulse"
+				}
+			]
+		},
+		{
+			"name": "body_apply_impulse",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_pos"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_impulse"
+				}
+			]
+		},
+		{
+			"name": "body_apply_torque_impulse",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_impulse"
+				}
+			]
+		},
+		{
+			"name": "body_set_axis_velocity",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_axis_velocity"
+				}
+			]
+		},
+		{
+			"name": "body_set_axis_lock",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				},
+				{
+					"type": "bool",
+					"name": "p_lock"
+				}
+			]
+		},
+		{
+			"name": "body_is_axis_locked",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				}
+			]
+		},
+		{
+			"name": "body_add_collision_exception",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_b"
+				}
+			]
+		},
+		{
+			"name": "body_remove_collision_exception",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_b"
+				}
+			]
+		},
+		{
+			"name": "body_set_max_contacts_reported",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_contacts"
+				}
+			]
+		},
+		{
+			"name": "body_get_max_contacts_reported",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_contacts_reported_depth_threshold",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "float",
+					"name": "p_threshold"
+				}
+			]
+		},
+		{
+			"name": "body_get_contacts_reported_depth_threshold",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_omit_force_integration",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "bool",
+					"name": "p_omit"
+				}
+			]
+		},
+		{
+			"name": "body_is_omitting_force_integration",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_set_ray_pickable",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "bool",
+					"name": "p_enable"
+				}
+			]
+		},
+		{
+			"name": "body_is_ray_pickable",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "body_test_motion",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_from"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_motion"
+				},
+				{
+					"type": "bool",
+					"name": "p_infinite_inertia"
+				},
+				{
+					"type": "void *",
+					"name": "r_result"
+				},
+				{
+					"type": "bool",
+					"name": "p_exclude_raycast_shapes"
+				}
+			]
+		},
+		{
+			"name": "body_test_ray_separation",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				},
+				{
+					"type": "bool",
+					"name": "p_infinite_inertia"
+				},
+				{
+					"type": "godot_vector3 *",
+					"name": "r_recover_motion"
+				},
+				{
+					"type": "void *",
+					"name": "r_results"
+				},
+				{
+					"type": "int",
+					"name": "p_result_max"
+				},
+				{
+					"type": "float",
+					"name": "p_margin"
+				}
+			]
+		},
+		{
+			"name": "soft_body_create",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "bool",
+					"name": "p_init_sleeping"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_space",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_space"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_space",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_collision_layer",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_layer"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_collision_layer",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_collision_mask",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "p_mask"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_collision_mask",
+			"return_type": "uint32_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_add_collision_exception",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_body_b"
+				}
+			]
+		},
+		{
+			"name": "soft_body_remove_collision_exception",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "maybe_index_t",
+					"name": "p_body_b"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_state",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_state"
+				},
+				{
+					"type": "const godot_variant *",
+					"name": "p_variant"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_state",
+			"return_type": "godot_variant",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_state"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_transform",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_transform"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_vertex_position",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "vertex_index"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_ray_pickable",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "bool",
+					"name": "p_enable"
+				}
+			]
+		},
+		{
+			"name": "soft_body_is_ray_pickable",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_simulation_precision",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_simulation_precision"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_simulation_precision",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_total_mass",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_total_mass"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_total_mass",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_linear_stiffness",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_stiffness"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_linear_stiffness",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_areaAngular_stiffness",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_stiffness"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_areaAngular_stiffness",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_volume_stiffness",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_stiffness"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_volume_stiffness",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_pressure_coefficient",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_pressure_coefficient"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_pressure_coefficient",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_pose_matching_coefficient",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_pose_matching_coefficient"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_pose_matching_coefficient",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_damping_coefficient",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_damping_coefficient"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_damping_coefficient",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_set_drag_coefficient",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "real_t",
+					"name": "p_drag_coefficient"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_drag_coefficient",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_move_point",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_point_index"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_global_position"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_point_global_position",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_point_index"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_point_offset",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_point_index"
+				}
+			]
+		},
+		{
+			"name": "soft_body_remove_all_pinned_points",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				}
+			]
+		},
+		{
+			"name": "soft_body_pin_point",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_point_index"
+				},
+				{
+					"type": "bool",
+					"name": "p_pin"
+				}
+			]
+		},
+		{
+			"name": "soft_body_is_point_pinned",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body"
+				},
+				{
+					"type": "int",
+					"name": "p_point_index"
+				}
+			]
+		},
+		{
+			"name": "joint_get_type",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "joint_set_solver_priority",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_priority"
+				}
+			]
+		},
+		{
+			"name": "joint_get_solver_priority",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "joint_disable_collisions_between_bodies",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "bool",
+					"name": "p_disable"
+				}
+			]
+		},
+		{
+			"name": "joint_is_disabled_collisions_between_bodies",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "joint_create_pin",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_local_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_local_B"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_set_local_a",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_A"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_get_local_a",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_set_local_b",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_B"
+				}
+			]
+		},
+		{
+			"name": "pin_joint_get_local_b",
+			"return_type": "godot_vector3",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "joint_create_hinge",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_hinge_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_hinge_B"
+				}
+			]
+		},
+		{
+			"name": "joint_create_hinge_simple",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_pivot_A"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_axis_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_pivot_B"
+				},
+				{
+					"type": "const godot_vector3 *",
+					"name": "p_axis_B"
+				}
+			]
+		},
+		{
+			"name": "hinge_joint_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "hinge_joint_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "hinge_joint_set_flag",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_flag"
+				},
+				{
+					"type": "bool",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "hinge_joint_get_flag",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_flag"
+				}
+			]
+		},
+		{
+			"name": "joint_create_slider",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_B"
+				}
+			]
+		},
+		{
+			"name": "slider_joint_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "slider_joint_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "joint_create_cone_twist",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_B"
+				}
+			]
+		},
+		{
+			"name": "cone_twist_joint_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "cone_twist_joint_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "joint_create_generic_6dof",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_body_A"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_A"
+				},
+				{
+					"type": "index_t",
+					"name": "p_body_B"
+				},
+				{
+					"type": "const godot_transform *",
+					"name": "p_local_frame_B"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "float",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_get_param",
+			"return_type": "float",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_set_flag",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				},
+				{
+					"type": "int",
+					"name": "p_flag"
+				},
+				{
+					"type": "bool",
+					"name": "p_enable"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_get_flag",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "p_axis"
+				},
+				{
+					"type": "int",
+					"name": "p_flag"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_set_precision",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				},
+				{
+					"type": "int",
+					"name": "precision"
+				}
+			]
+		},
+		{
+			"name": "generic_6dof_joint_get_precision",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_joint"
+				}
+			]
+		},
+		{
+			"name": "shape_create",
+			"return_type": "maybe_index_t",
+			"arguments": [
+				{
+					"type": "int",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "shape_set_data",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				},
+				{
+					"type": "const godot_variant *",
+					"name": "p_data"
+				}
+			]
+		},
+		{
+			"name": "shape_get_type",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "shape_get_data",
+			"return_type": "godot_variant",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "shape_set_margin",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				},
+				{
+					"type": "real_t",
+					"name": "p_margin"
+				}
+			]
+		},
+		{
+			"name": "shape_get_margin",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "shape_set_custom_solver_bias",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				},
+				{
+					"type": "real_t",
+					"name": "p_bias"
+				}
+			]
+		},
+		{
+			"name": "shape_get_custom_solver_bias",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_shape"
+				}
+			]
+		},
+		{
+			"name": "space_create",
+			"return_type": "maybe_index_t",
+			"arguments": []
+		},
+		{
+			"name": "space_set_active",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				},
+				{
+					"type": "bool",
+					"name": "p_active"
+				}
+			]
+		},
+		{
+			"name": "space_is_active",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				}
+			]
+		},
+		{
+			"name": "space_set_param",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				},
+				{
+					"type": "real_t",
+					"name": "p_value"
+				}
+			]
+		},
+		{
+			"name": "space_get_param",
+			"return_type": "real_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				},
+				{
+					"type": "int",
+					"name": "p_param"
+				}
+			]
+		},
+		{
+			"name": "space_set_debug_contacts",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				},
+				{
+					"type": "int",
+					"name": "p_max_contacts"
+				}
+			]
+		},
+		{
+			"name": "space_get_contact_count",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "p_space"
+				}
+			]
+		},
+		{
+			"name": "set_active",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "bool",
+					"name": "p_active"
+				}
+			]
+		},
+		{
+			"name": "init",
+			"return_type": "void",
+			"arguments": []
+		},
+		{
+			"name": "step",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "float",
+					"name": "p_deltaTime"
+				}
+			]
+		},
+		{
+			"name": "sync",
+			"return_type": "void",
+			"arguments": []
+		},
+		{
+			"name": "flush_queries",
+			"return_type": "void",
+			"arguments": []
+		},
+		{
+			"name": "finish",
+			"return_type": "void",
+			"arguments": []
+		},
+		{
+			"name": "get_process_info",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "int",
+					"name": "p_info"
+				}
+			]
+		},
+		{
+			"name": "area_get_body_event",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "area"
+				},
+				{
+					"type": "struct physics_area_monitor_event *",
+					"name": "event"
+				}
+			]
+		},
+		{
+			"name": "area_get_area_event",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "area"
+				},
+				{
+					"type": "struct physics_area_monitor_event *",
+					"name": "event"
+				}
+			]
+		},
+		{
+			"name": "body_get_contact",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				},
+				{
+					"type": "uint32_t",
+					"name": "id"
+				},
+				{
+					"type": "struct physics_body_contact *",
+					"name": "contact"
+				}
+			]
+		},
+		{
+			"name": "body_get_direct_state",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				},
+				{
+					"type": "struct physics_body_state *",
+					"name": "state"
+				}
+			]
+		},
+		{
+			"name": "body_get_collision_exception",
+			"return_type": "index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				},
+				{
+					"type": "int",
+					"name": "index"
+				}
+			]
+		},
+		{
+			"name": "body_get_collision_exception_count",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				}
+			]
+		},
+		{
+			"name": "free",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "id"
+				}
+			]
+		},
+		{
+			"name": "space_get_contact",
+			"return_type": "void",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "space"
+				},
+				{
+					"type": "int",
+					"name": "id"
+				},
+				{
+					"type": "godot_vector3 *",
+					"name": "out"
+				}
+			]
+		},
+		{
+			"name": "space_intersect_ray",
+			"return_type": "bool",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "space"
+				},
+				{
+					"type": "const struct physics_ray_info *",
+					"name": "info"
+				},
+				{
+					"type": "struct physics_ray_result *",
+					"name": "result"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_collision_exception",
+			"return_type": "index_t",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				},
+				{
+					"type": "int",
+					"name": "index"
+				}
+			]
+		},
+		{
+			"name": "soft_body_get_collision_exception_count",
+			"return_type": "int",
+			"arguments": [
+				{
+					"type": "index_t",
+					"name": "body"
+				}
+			]
+		}
+	],
+	"structs": {
+		"physics_body_state": [
+			{
+				"type": "godot_transform",
+				"name": "transform"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "linear_velocity"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "angular_velocity"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "center_of_mass"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "gravity"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "inv_inertia"
+			},
+			{
+				"type": "godot_basis",
+				"name": "inv_inertia_tensor"
+			},
+			{
+				"type": "index_t",
+				"name": "space"
+			},
+			{
+				"type": "uint32_t",
+				"name": "contact_count"
+			},
+			{
+				"type": "real_t",
+				"name": "inv_mass"
+			},
+			{
+				"type": "real_t",
+				"name": "angular_damp"
+			},
+			{
+				"type": "real_t",
+				"name": "linear_damp"
+			},
+			{
+				"type": "bool",
+				"name": "sleeping"
+			}
+		],
+		"physics_body_contact": [
+			{
+				"type": "godot_vector3",
+				"name": "position"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "velocity"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "local_position"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "local_normal"
+			},
+			{
+				"type": "index_t",
+				"name": "index"
+			},
+			{
+				"type": "uint32_t",
+				"name": "shape"
+			},
+			{
+				"type": "uint32_t",
+				"name": "local_shape"
+			},
+			{
+				"type": "int",
+				"name": "object_id"
+			},
+			{
+				"type": "float",
+				"name": "impulse"
+			}
+		],
+		"physics_ray_info": [
+			{
+				"type": "godot_vector3",
+				"name": "from"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "to"
+			},
+			{
+				"type": "const index_t *",
+				"name": "exclude"
+			},
+			{
+				"type": "size_t",
+				"name": "exclude_count"
+			},
+			{
+				"type": "uint32_t",
+				"name": "collision_mask"
+			},
+			{
+				"type": "bool",
+				"name": "collide_with_bodies"
+			},
+			{
+				"type": "bool",
+				"name": "collide_with_areas"
+			},
+			{
+				"type": "bool",
+				"name": "pick_ray"
+			}
+		],
+		"physics_ray_result": [
+			{
+				"type": "godot_vector3",
+				"name": "position"
+			},
+			{
+				"type": "godot_vector3",
+				"name": "normal"
+			},
+			{
+				"type": "index_t",
+				"name": "id"
+			},
+			{
+				"type": "int",
+				"name": "object_id"
+			},
+			{
+				"type": "int",
+				"name": "shape"
+			}
+		],
+		"physics_area_monitor_event": [
+			{
+				"type": "index_t",
+				"name": "id"
+			},
+			{
+				"type": "int",
+				"name": "object_id"
+			},
+			{
+				"type": "bool",
+				"name": "added"
+			}
+		]
+	}
+}
